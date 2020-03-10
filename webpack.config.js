@@ -1,6 +1,8 @@
 const path = require('path');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-    mode: 'development',
+    mode: 'production',
 
     /* 
     // Multiple Entry Points
@@ -10,18 +12,30 @@ module.exports = {
     },
  */
     // Single Entry point
-    // entry: './src/index.js',
+    entry: './src/index.js',
 
     //multi main entry
     // entry: ['./src/index', './src/add', './src/subtract'],
 
     output: {
-        // filename: 'singleEntry.js'
+        filename: 'singleEntry.js'
         /*   
                     // Multi Entry Points
                             filename: '[name].js', 
                             path: path.resolve(__dirname, 'distribution')
                         */
         // filename:'multiMainEntry.js'
-    }
+    },
+
+    module: {
+        rules: [
+            { test: /\.css/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] }
+        ]
+    },
+
+    plugins: [
+        new htmlWebpackPlugin()
+    ]
+
+
 };
