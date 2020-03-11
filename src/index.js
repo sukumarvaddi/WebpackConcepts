@@ -1,9 +1,10 @@
-import add from './add';
-import subtract from './subtract';
-import './styles.css';
-
-
-
+import add from './add'
 console.log(add(4, 5));
-console.log(subtract(10, 5));
+
+
+import('./subtract').then(({ default: substract }) => {
+    console.log(substract(10, 5))
+})
+
+
 
