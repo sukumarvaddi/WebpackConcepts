@@ -1,5 +1,7 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+var ManifestPlugin = require('webpack-manifest-plugin');
+
 
 module.exports = {
     mode: 'production',
@@ -34,7 +36,8 @@ module.exports = {
     },
 
     plugins: [
-        new htmlWebpackPlugin()
+        new htmlWebpackPlugin(),
+        new new ManifestPlugin()
     ]
 
 
