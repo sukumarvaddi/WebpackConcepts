@@ -4,7 +4,7 @@ var ManifestPlugin = require('webpack-manifest-plugin');
 
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
 
     /* 
     // Multiple Entry Points
@@ -20,7 +20,7 @@ module.exports = {
     // entry: ['./src/index', './src/add', './src/subtract'],
 
     output: {
-        filename: 'singleEntry.js'
+        filename: '[name][chunkhash].js'
         /*   
                     // Multi Entry Points
                             filename: '[name].js', 
@@ -37,8 +37,11 @@ module.exports = {
 
     plugins: [
         new htmlWebpackPlugin(),
-        new new ManifestPlugin()
-    ]
+        new ManifestPlugin()
+    ],
+    optimization: {
+        runtimeChunk: 'single',
+    },
 
 
 };
